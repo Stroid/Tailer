@@ -1,12 +1,14 @@
 Handler handler;
 FlowField field;
+
+float scl = 20;
 void setup() {
   size(800, 500);
-  //smooth();
+  smooth();
 
   handler = new Handler();
   field = new FlowField();
-  field.update();
+  
   
   for (int i = 0; i < 20; i++) {
     handler.add(new Particle(random(width), random(height), handler));
@@ -15,11 +17,11 @@ void setup() {
 
 void draw() {
   int mill = millis();
-  background(200);
+  background(255);
   handler.update();
   handler.display();
   println(frameRate, handler.handler.size(), millis() - mill);
-  
+  field.update(); //<>//
   
   //field.display();
 }

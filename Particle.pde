@@ -1,13 +1,17 @@
-class Particle { //<>//
+class Particle { //<>// //<>//
   PVector pos;
   PVector vel;
   PVector acc;
   PVector lastPos;
+  
+
   Particle(float x, float y, Handler handler) {
     this.pos = new PVector(x, y);
     this.vel = new PVector();
     this.acc = new PVector();
     this.lastPos = new PVector();
+    
+    
   }
 
   void update() {
@@ -25,6 +29,15 @@ class Particle { //<>//
     if (this.pos.x > width) {
       this.pos.x = 0;
     }
+    else if(this.pos.x < 0){
+     this.pos.x = width;
+    }
+    if (this.pos.y > height) {
+      this.pos.y = 0;
+    }
+    else if(this.pos.y < 0){
+      this.pos.y = height;
+    }
   }
 
   void display() {
@@ -34,7 +47,10 @@ class Particle { //<>//
   }
 
   void calcForce() {
-    float angle = 0;
+    int X = int(map(this.pos.x, 0, width, 0, width / scl - 1));
+    int Y = int(map(this.pos.y, 0, height, 0, height / scl - 1));
+
+    float angle = field.field[X][Y];
     PVector force = PVector.fromAngle(angle);
     force.mult(0.5);
 

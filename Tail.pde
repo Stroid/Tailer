@@ -9,7 +9,7 @@ class Tail extends Particle{
     alpha = 5;
   }
   void update(){
-    alpha -= 1;
+    alpha -= 0.03;
     if(alpha < 0){
       handler.remove(this);
     }

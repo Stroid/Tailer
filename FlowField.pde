@@ -1,13 +1,12 @@
 class FlowField {
-  float scl = 20;
   int rows = int(width / scl);
   int cols = int(height / scl);
   float[][] field = new float[rows][cols];
 
-  void update() {
+  void update() { //<>//
     for (int col = 0; col < cols; col++) {
       for (int row = 0; row < rows; row++) {
-        field[row][col] = 0;
+        field[row][col] = (noise(col * 0.7, row * 0.7, frameCount * 0.01)* 2 - 1) * 2 * PI;
       }
     }
   }
